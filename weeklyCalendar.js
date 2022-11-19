@@ -28,7 +28,8 @@ function weeklyCalendar() {
             }
             var className = String(Math.ceil(timeSlotHr)) + ":" + timeSlotMin[i % 2]
             element.setAttribute("class", className);
-            element.style.cssText += "vertical-align: top;"
+
+            element.style.cssText += "vertical-align: top;cursor: not-allowed;"
             timeSlotHr += 0.5 
             document.getElementById("rw" + (i + 1)).appendChild(element);
             for(var j=1; j<8;j++)
@@ -54,24 +55,38 @@ function goBack()
 
 var isMouseDown = false
 var isHighlighted = false;
-
+var highlightedOnes = []
 document.getElementById("weekCalendar").onmousedown = function (event) {
 isMouseDown = true;
-console.log("MOUSE DOWN")
-event.target.classList.add("highlighted");
+console.log("MOUSE DOWN", event.target)
+if(event.target.className.includes('-'))
+    {
+        highlightedOnes.push(event.target.className)
+        event.target.classList.add("highlighted");
+        
+    }
+
 // document.querySelector(this).classList.toggle("highlighted");
 isHighlighted = document.getElementById("weekCalendar").classList.contains("highlighted");
+// prevent dragging the cell
+return false;
 }
 
 document.getElementById("weekCalendar").onmouseover = function (event) {
     console.log("MOUSE OVER")
-if (isMouseDown) {
-    event.target.classList.add("highlighted");
-    // document.querySelector(this).classList.toggle("highlighted", isHighlighted);
+    // condition HERE NEEDEDDDDD
+if (isMouseDown && event.target.className.includes('-') && highlightedOnes.length >0) {
+    var columnClassIndex = highlightedOnes.at(-1).substring(highlightedOnes.at(-1).indexOf('-'))
+    if(event.target.className.includes(columnClassIndex))
+    {
+        highlightedOnes.push(event.target.className)
+        event.target.classList.add("highlighted");
+    }
 }
 }
 
 document.getElementById("weekCalendar").onmouseup = function () {
     console.log("MOUSE UP")
-isMouseDown = false;
+    isMouseDown = false;
+    // store values inside of the weekInputBox
 }

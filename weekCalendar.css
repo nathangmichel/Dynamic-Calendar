@@ -54,3 +54,9 @@ transition-duration: 0.4s;
 td.highlighted {
 	background-color:darkred;
   }
+
+#weekCalendar tr td:first-child::selection, #weekCalendar tr[name="headerMenu"] th::selection, #topLegend th::selection
+{
+	color: none;
+	background: none;
+}

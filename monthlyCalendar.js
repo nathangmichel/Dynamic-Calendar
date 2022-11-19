@@ -108,18 +108,6 @@ document.getElementById("calendar").onclick = function (event) {
             var newdate = dayTime + "/" + monthTime + "/" + today.getFullYear();
             displayDate(newdate);
 
-            
-            // WEEKLY CALENDAR UPDATE LEGEND
-            weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-            var selectedWeekRow = document.getElementById("selectedDay").parentNode
-            var weekLegend = document.getElementById("topLegend")
-            var indexCountWeekRow = 0
-            for(var i =1; i< weekLegend.cells.length; i++)
-            {
-                weekLegend.cells[i].textContent = weekDays[i-1] + " " + String(selectedWeekRow.cells[indexCountWeekRow].textContent) + "/" + String(monthTime)
-                indexCountWeekRow++
-            }
-
         } else {
             event.target.id = "selectedDay";
             var dayTime = event.target.textContent;
@@ -134,6 +122,17 @@ document.getElementById("calendar").onclick = function (event) {
             }
             var newdate = dayTime + "/" + monthTime + "/" + today.getFullYear();
             displayDate(newdate);
+        }
+
+        // WEEKLY CALENDAR UPDATE LEGEND
+        weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        var selectedWeekRow = document.getElementById("selectedDay").parentNode
+        var weekLegend = document.getElementById("topLegend")
+        var indexCountWeekRow = 0
+        for(var i =1; i< weekLegend.cells.length; i++)
+        {
+            weekLegend.cells[i].textContent = weekDays[i-1] + " " + String(selectedWeekRow.cells[indexCountWeekRow].textContent) + "/" + String(monthTime)
+            indexCountWeekRow++
         }
 
     }

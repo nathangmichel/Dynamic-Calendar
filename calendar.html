@@ -59,7 +59,7 @@
                      <table id="weekCalendar">
                         <tr name = "headerMenu">
                            <th id="back"> ↶ </th>
-                           <th colspan="5" id="monthLabel"></th>
+                           <th colspan="6" id="monthLabel"></th>
                            <th id="nextmonth"> ▶ </th>
                         </tr>
                         <tr id="topLegend">
@@ -123,14 +123,35 @@
                      </table>
                   </td>
                   <td>
-                     <label>Date & Time*
+                     <label>Date & Time
                      <br><br>
-                     <input type="text" name = "date" class = "inputBox" value="" readonly placeholder="DD/MM/YY" required>
+                     <input type="text" name = "date" class = "weekInputBox" value="" readonly placeholder="DD/MM/YY" required>
                      </label>
                      <br><br><br>
-                     <select name="time" class = "inputBox" onmouseover="removeTime()">
-                        <option value="option" selected disabled>Time</option>
-                     </select>
+                     <select id="hours"></select>
+                     <select id="minutes"></select>
+
+                     <script>
+
+                           function createOption(value, text) {
+                                 var option = document.createElement('option');
+                                 option.text = text;
+                                 option.value = value;
+                                 return option;
+                           }
+
+                           var hourSelect = document.getElementById('hours');
+                           for(var i = 0; i < 24; i++){
+                                 hourSelect.add(createOption(i, i));
+                           }
+
+                           var minutesSelect = document.getElementById('minutes');
+                           for(var i = 0; i < 60; i += 30) {
+                                 minutesSelect.add(createOption(i, i));
+                           }
+                     </script>
+                     <br><br><br>
+                     <input type="text" name = "timeDebug" class = "weekInputBox" value="" readonly placeholder="0:0-9:9" required>
                   </td>
                </tr>
             </table>
