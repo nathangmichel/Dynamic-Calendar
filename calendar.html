@@ -159,7 +159,84 @@
       </div>
       <script type="text/javascript" src="monthlyCalendar.js"></script>
       <script type="text/javascript" src="weeklyCalendar.js"></script>
+
       
+
+
+      <div>
+         <h1>Add Task</h1>
+ 
+         <input type="text" id="task_name" placeholder="Task Name" class="task_name"><br>
+         
+         <label for="importance_slider">Importance:</label>
+         <input type="range" min="0" max="100" value="50" class="slider" id="importance_slider" oninput="this.nextElementSibling.value = this.value">
+         <output id="imp_sli_text">50</output>
+         <br>
+         
+         <label for="est_length">Estimated Length:</label>
+         <input type="range" min="30" max="240" value="30" class="slider" step="30" id="est_length" oninput="this.nextElementSibling.value = this.value">
+         <output id="est_sli_text">30</output>
+         <br>
+ 
+         <input id="add_date_button" type="submit" value="Add Due Date"><br id="add_date_button_break">
+ 
+         <div id="task_date" style="display:none">
+           <label for="urgency_date">Due Date:</label>
+           <input type="date" id="urgency_date" value="">
+           <input id="remove_date_button" type="submit" value="Remove Due Date">
+         </div>
+         
+         <input id="add_task_button" type="submit" name="button" value="+"/><br>
+         <p id="missing_info" style="display:none">Fill out missing information!</p>
+ 
+       </div>
+       <div>
+         <h1>Add Event</h1>
+         <label for="fevent">Name:</label>
+         <input type="text" id="fevent" name="fevent"><br>
+         <label for="date">Date:</label>
+         <input type="date" id="date" name="trip-start"><br>
+         <label for="start">Start:</label>
+         <input type="time" id="start"><br>
+         <label for="end">End:</label>
+         <input type="time" id="end"><br>
+         <input id="button2" type="submit" name="button2" value="+"/>
+       </div><br>
+       
+       <input id="button_update" type="submit" value="UPDATE CALENDAR"/>
+ 
+       <div>
+         <h1>Tasks</h1>
+         <ul id="list_of_tasks"></ul>
+       </div>
+ 
+       <div>
+         <h1>Events</h1>
+         <ul id="list_of_events"></ul>
+       </div>
+ 
+       <div>
+         <h1>Calendar</h1>
+         <p id="cal_array"></p>
+       </div>
+ 
+ 
+       <!--
+ 
+         <p id="alltasks"></p>
+       <p id="allevents"></p>
+ 
+       -->
+ 
+ 
+       
+       <script src="test.js"></script>
+       <div>
+         
+       </div>
+
+
+
    </body>
    <!----Footer of the page---->
 </html>
