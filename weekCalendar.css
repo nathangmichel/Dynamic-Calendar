@@ -55,6 +55,10 @@ td.highlighted {
 	background-color:darkred;
   }
 
+td.lectureHighlight {
+background-color:lightblue;
+}
+
 #weekCalendar tr td:first-child::selection, #weekCalendar tr[name="headerMenu"] th::selection, #topLegend th::selection
 {
 	color: none;

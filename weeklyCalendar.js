@@ -85,8 +85,40 @@ if (isMouseDown && event.target.className.includes('-') && highlightedOnes.lengt
 }
 }
 
+var temporaryCourse = []
+
 document.getElementById("weekCalendar").onmouseup = function () {
     console.log("MOUSE UP")
     isMouseDown = false;
     // store values inside of the weekInputBox
+    if(highlightedOnes.length > 1)
+    {
+        var times = highlightedOnes.at(0) + "<->" + highlightedOnes.at(-1)
+        var timeBox = document.getElementsByClassName("weekInputBox")[1]
+        timeBox.value = times
+
+        var highlightedCells = Array.from(document.getElementsByClassName("highlighted"))
+        
+        // remove highlighted cells
+        highlightedCells.forEach(cell => {
+            cell.classList.remove('highlighted');
+        })
+        temporaryCourse = highlightedOnes
+        highlightedOnes = []
+        addCourseToCalendar(temporaryCourse)
+    }
+}
+
+function addCourseToCalendar(hoursListClassName)
+{
+    var table = document.getElementById("weekCalendar");
+    for (var i = 0, row; row = table.rows[i]; i++) {
+        for (var j = 0, col; col = row.cells[j]; j++) {
+            //iterate through columns
+            if(hoursListClassName.includes(col.className))
+            {
+                col.classList.add("lectureHighlight");
+            }
+        }  
+    }
 }
