@@ -1,5 +1,10 @@
 // CLASSES AND CONSTANTS
 
+let wake;
+let bed;
+
+
+
 const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 class Task {
@@ -28,6 +33,8 @@ for (var i = 0; i < 48; i++) {
     result[i] = null;
     event_calendar[i] = null;
 }
+
+
 
 // IF DUE DATE NEEDS TO BE ADDED OR REMOVED
 
@@ -108,7 +115,11 @@ function updateTasks() {
                 }
             }
             tasks.splice(i, 1);
+            for (let j = 0; j < 48; j++) {
+                if (result[j] == item) result[j] = null;
+            }
             updateTasks();
+            updateCalendar();
         }
         list.appendChild(li);
     })
@@ -158,27 +169,96 @@ function updateEvents() {
         x.onclick = function() {
             this.parentElement.style.display = "none";
             var i;
-            for (i =0; i < events.length; i++) {
+            for (i = 0; i < events.length; i++) {
                 if (events[i] == item) {
-                    for (var j = i; j < (item.end[0] * 60 + item.end[1]) / 30; j++) {
-                        event_calendar[j] = null;
+                    for (var j = 0; j < event_calendar.length; j++) {
+                        if (event_calendar[j] == item) {
+                            event_calendar[j] = null;
+                        }
                     }
                     break;
                 }
             }
             events.splice(i, 1);
             updateTasks();
-            updateCalendar();
+            result = [...event_calendar];
+            sync()
         }
         list.appendChild(li);
     })
-
+    result = [...event_calendar];
     updateCalendar();
     //document.getElementById("allevents").innerHTML = JSON.stringify(events, null, 2);
 }
 
 function updateCalendar(){
-    document.getElementById("cal_array").innerHTML = JSON.stringify(event_calendar, null, 2);
+    document.getElementById("cal_array").innerHTML = JSON.stringify(result, null, 2);
 }
 
+function sync() {
+    wake = [parseInt(document.getElementById("wake").value.split(":")[0]), parseInt(document.getElementById("wake").value.split(":")[1])];
+    bed = [parseInt(document.getElementById("bed").value.split(":")[0]), parseInt(document.getElementById("bed").value.split(":")[1])];
 
+    for (var i = 0; i < 48; i++) {
+
+        if (i < (wake[0]*60+wake[1])/30) {
+            event_calendar[i] = -1;
+        }
+
+        if (i >= (bed[0]*60+bed[1])/30) {
+            event_calendar[i] = -1;
+        }
+    }
+
+    result = [...event_calendar];
+
+    if (tasks.length > 0) {
+
+    tasks.sort(function(a,b){
+        if (isNaN(a.date)) {
+            if (isNaN(b.date)) return b.importance - a.importance;
+            return 1;
+        } else if (isNaN(b.date)) {
+            if (isNaN(a.date)) return b.importance - a.importance;
+            return -1;
+        } else {
+            if (a.date == b.date) {
+                return b.importance - a.importance
+            }
+            return a.date - b.date
+        }
+        
+    })
+
+    console.log(tasks)
+
+    let j = 0;
+    let current_est = tasks[j].est_length;
+    for (var i = 0; i < 48; i++) {
+
+        console.log(result)
+
+        if (result[i] != null) continue; 
+            
+        if (current_est > 0) {
+            result[i] = tasks[j];
+            current_est -= 30;
+        } else {
+            j++;
+            if (j == tasks.length) break
+            current_est = tasks[j].est_length;
+            i--;
+        }
+
+    }
+
+    }
+
+    updateCalendar();
+}
+
+document.getElementById("button_update").onclick = function() {
+
+    sync()
+
+}
