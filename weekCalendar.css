@@ -1,0 +1,46 @@
+
+#weekCalendar
+{
+	border-radius: 4px;
+	border: 2px solid #555555;
+	background-color: rgb(255, 255, 255, .8);
+}
+
+#back
+{
+	font-size: 18px !important;
+}
+
+#calendar
+{
+	position: relative;
+	left: -50px;
+}
+
+
+#weekCalendar tr td, #weekCalendar tr th
+{
+font-size: 14px;
+border: 2px solid transparent;
+border-radius: 5px;
+text-align: center;
+}
+
+#weekCalendar tr:hover td:not(:first-child)
+{
+background-color: rgb(240, 240, 240);
+transition-duration: 0.4s;
+}
+
+#back
+{
+	font-weight: bold;
+	background-color: rgb(255,99,71, .3);
+	transition-duration: 0.4s;
+}
+
+#back:hover
+{
+	background-color: darkred;
+	color: white;
+}
