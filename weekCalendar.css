@@ -26,7 +26,13 @@ border-radius: 5px;
 text-align: center;
 }
 
-#weekCalendar tr:hover td:not(:first-child)
+#weekCalendar tr td
+{
+	padding: 0 14px 20px 14px;
+	width: 70px;
+}
+
+#weekCalendar tr td:hover:not(:first-child)
 {
 background-color: rgb(240, 240, 240);
 transition-duration: 0.4s;
@@ -44,3 +50,7 @@ transition-duration: 0.4s;
 	background-color: darkred;
 	color: white;
 }
+
+td.highlighted {
+	background-color:darkred;
+  }

@@ -28,11 +28,11 @@ function monthCalendar() {
 	    {
 	    	monthTime = "0" + (new Date().getMonth() + 1);
 	    }
-	    document.getElementsByClassName("inputBox")[1].value = dayTime + "/" + monthTime + "/" + new Date().getFullYear();
+	    document.getElementsByClassName("inputBox")[0].value = dayTime + "/" + monthTime + "/" + new Date().getFullYear();
     }
     else
     {
-    	document.getElementsByClassName("inputBox")[1].value = "";
+    	document.getElementsByClassName("inputBox")[0].value = "";
     }
    
 
@@ -107,6 +107,19 @@ document.getElementById("calendar").onclick = function (event) {
             }
             var newdate = dayTime + "/" + monthTime + "/" + today.getFullYear();
             displayDate(newdate);
+
+            
+            // WEEKLY CALENDAR UPDATE LEGEND
+            weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+            var selectedWeekRow = document.getElementById("selectedDay").parentNode
+            var weekLegend = document.getElementById("topLegend")
+            var indexCountWeekRow = 0
+            for(var i =1; i< weekLegend.cells.length; i++)
+            {
+                weekLegend.cells[i].textContent = weekDays[i-1] + " " + String(selectedWeekRow.cells[indexCountWeekRow].textContent) + "/" + String(monthTime)
+                indexCountWeekRow++
+            }
+
         } else {
             event.target.id = "selectedDay";
             var dayTime = event.target.textContent;
@@ -128,7 +141,7 @@ document.getElementById("calendar").onclick = function (event) {
 
 
 function displayDate(value) {
-    document.getElementsByClassName("inputBox")[1].value = value;
+    document.getElementsByClassName("inputBox")[0].value = value;
 }
 
 
@@ -160,9 +173,9 @@ document.getElementById("nextmonth").addEventListener("click", nextMonth);
 
 //THIS IS THE TIME SELECT MENU
 function removeTime() {
-	var dateBox = document.getElementsByClassName("inputBox")[1];
+	var dateBox = document.getElementsByClassName("inputBox")[0];
 
-	var selectTimes = document.getElementsByClassName("inputBox")[2];
+	var selectTimes = document.getElementsByClassName("inputBox")[1];
 	var length = selectTimes.options.length;
     //day and month the same
     if(new Date().getDate() == dateBox.value.substring(0, 2) && new Date().getMonth()+1 == dateBox.value.substring(3,5))

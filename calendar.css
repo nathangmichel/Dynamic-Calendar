@@ -18,19 +18,6 @@ td{
 	padding: 14px;
 }
 
-#core{
-	border: 5px solid black;
-	border-radius: 25px;
-	background-color: ##f5e7e6;
-	 margin-left: auto;
-  	margin-right: auto;
-  	margin-top: 45px;
-  	margin-bottom: 5px;
-}
-
-h1, h2{
-	font-family: Arial;
-}
 
 #surveyBio
 {
