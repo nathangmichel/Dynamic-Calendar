@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+-<!DOCTYPE html>
 <html lang="en">
    <head>
       <title>Calendar Test</title>
@@ -7,163 +7,131 @@
       <link rel="stylesheet" type="text/css" href="weekCalendar.css">
    </head>
    <body>
-      <!--  -->
       <div class = "background">
-         <div class = "pageTitle">
-            <header class = "pageHeader"> Calendar </header>
-         </div>
+         <div class="grid-container">
+            <div class = "grid-item grid-item-pageTitle">
+               <header class = "pageHeader"> Calendar  </header>
+            </div>
 
-         <!--  -->
-         <form class="reserve" action="" method="POST">
-            <div id="alertMsg"></div>
-            <div id="alertReserve"></div>
-            <table id = "Info">
-               <tr>
-                  <td name="calendarSlot">
-                     <table id="calendar">
-                        <tr name = "headerMenu">
-                           <th id="prevmonth"> ◀ </th>
-                           <th colspan="5" id="monthLabel"></th>
-                           <th id="nextmonth"> ▶ </th>
-                        </tr>
-                        <tr>
-                           <th>Sun</th>
-                           <th>Mon</th>
-                           <th>Tue</th>
-                           <th>Wed</th>
-                           <th>Thu</th>
-                           <th>Fri</th>
-                           <th>Sat</th>
-                        </tr>
-                        <tr id="row1"></tr>
-                        <tr id = "row2"></tr>
-                        <tr id = "row3"></tr>
-                        <tr id = "row4"></tr>
-                        <tr id = "row5"></tr>
-                        <tr id = "row6"></tr>
-                     </table>
-                  </td>
-                  <td>
-                     <label>Date & Time*
-                     <br><br>
-                     <input type="text" name = "date" class = "inputBox" value="" readonly placeholder="DD/MM/YY" required>
-                     </label>
-                     <br><br><br>
-                     <select name="time" class = "inputBox" onmouseover="removeTime()">
-                        <option value="option" selected disabled>Time</option>
-                     </select>
-                  </td>
-               </tr>
-               <tr>
-                  <td name="calendarSlot">
-                     <table id="weekCalendar">
-                        <tr name = "headerMenu">
-                           <th id="back"> ↶ </th>
-                           <th colspan="6" id="monthLabel"></th>
-                           <th id="nextmonth"> ▶ </th>
-                        </tr>
-                        <tr id="topLegend">
-                           <th>Times</th>
-                           <th>Sun</th>
-                           <th>Mon</th>
-                           <th>Tue</th>
-                           <th>Wed</th>
-                           <th>Thu</th>
-                           <th>Fri</th>
-                           <th>Sat</th>
-                        </tr>
-                        <tr id="rw1"></tr>
-                        <tr id = "rw2"></tr>
-                        <tr id = "rw3"></tr>
-                        <tr id = "rw4"></tr>
-                        <tr id = "rw5"></tr>
-                        <tr id = "rw6"></tr>
-                        <tr id = "rw7"></tr>
-                        <tr id = "rw8"></tr>
-                        <tr id = "rw9"></tr>
-                        <tr id = "rw10"></tr>
-                        <tr id = "rw11"></tr>
-                        <tr id = "rw12"></tr>
-                        <tr id = "rw13"></tr>
-                        <tr id = "rw14"></tr>
-                        <tr id = "rw15"></tr>
-                        <tr id = "rw16"></tr>
-                        <tr id = "rw17"></tr>
-                        <tr id = "rw18"></tr>
-                        <tr id = "rw19"></tr>
-                        <tr id = "rw20"></tr>
-                        <tr id = "rw21"></tr>
-                        <tr id = "rw22"></tr>
-                        <tr id = "rw23"></tr>
-                        <tr id = "rw24"></tr>
-                        <tr id = "rw25"></tr>
-                        <tr id = "rw26"></tr>
-                        <tr id = "rw27"></tr>
-                        <tr id = "rw28"></tr>
-                        <tr id = "rw29"></tr>
-                        <tr id = "rw30"></tr>
-                        <tr id = "rw31"></tr>
-                        <tr id = "rw32"></tr>
-                        <tr id = "rw33"></tr>
-                        <tr id = "rw34"></tr>
-                        <tr id = "rw35"></tr>
-                        <tr id = "rw36"></tr>
-                        <tr id = "rw37"></tr>
-                        <tr id = "rw38"></tr>
-                        <tr id = "rw39"></tr>
-                        <tr id = "rw40"></tr>
-                        <tr id = "rw41"></tr>
-                        <tr id = "rw42"></tr>
-                        <tr id = "rw43"></tr>
-                        <tr id = "rw44"></tr>
-                        <tr id = "rw45"></tr>
-                        <tr id = "rw46"></tr>
-                        <tr id = "rw47"></tr>
-                        <tr id = "rw48"></tr>
-                     </table>
-                  </td>
-                  <td>
-                     <label>Date & Time
-                     <br><br>
-                     <input type="text" name = "date" class = "weekInputBox" value="" readonly placeholder="DD/MM/YY" required>
-                     </label>
-                     <br><br><br>
-                     <select id="hours"></select>
-                     <select id="minutes"></select>
+            <!--  -->
+            <!-- <form class="reserve" action="" method="POST"> -->
+               <!-- <div id="alertMsg"></div>
+               <div id="alertReserve"></div> -->
 
-                     <script>
+            <!-- Wake-up/Bed time options -->
+            <div class="grid-item grid-item-wakeBed">
+               <label for="wake">Wake Up Time:</label>
+               <input type="time" id="wake"><br>
+            </div>
+            <div class="grid-item grid-item-wakeBed">
+               <label for="bed">Bedtime:</label>
+               <input type="time" id="bed"><br>
+            </div>
+            <!--
+            <h1 class="teList">Wake Up / Bedtime</h1>
+            <div class="set_constraints">
+             <label for="wake">Wake Up Time:</label>
+             <input type="time" id="wake" class="aaa"><br>
+             <label for="bed">Bedtime:</label>
+             <input type="time" id="bed" class="aaa"><br>
+            </div>-->
 
-                           function createOption(value, text) {
-                                 var option = document.createElement('option');
-                                 option.text = text;
-                                 option.value = value;
-                                 return option;
-                           }
-
-                           var hourSelect = document.getElementById('hours');
-                           for(var i = 0; i < 24; i++){
-                                 hourSelect.add(createOption(i, i));
-                           }
-
-                           var minutesSelect = document.getElementById('minutes');
-                           for(var i = 0; i < 60; i += 30) {
-                                 minutesSelect.add(createOption(i, i));
-                           }
-                     </script>
-                     <br><br><br>
-                     <input type="text" name = "timeDebug" class = "weekInputBox" value="" readonly placeholder="0:0-9:9" required>
-                  </td>
-               </tr>
-            </table>
-         </form>
-      </div>
+            <!-- Calendar -->
+            <div class = "grid-item grid-item-trio" name="calendarSlot">
+               <table id="weekCalendar">
+                  <tr name = "headerMenu">
+                     <th id="back"> ↶ </th>
+                     <th colspan="6" id="monthLabel"></th>
+                     <th id="nextmonth"> ▶ </th>
+                  </tr>
+                  <tr id="topLegend">
+                     <th>Times</th>
+                     <th>Sun</th>
+                     <th>Mon</th>
+                     <th>Tue</th>
+                     <th>Wed</th>
+                     <th>Thu</th>
+                     <th>Fri</th>
+                     <th>Sat</th>
+                  </tr>
+                  <tr id = "rw1"></tr>
+                  <tr id = "rw2"></tr>
+                  <tr id = "rw3"></tr>
+                  <tr id = "rw4"></tr>
+                  <tr id = "rw5"></tr>
+                  <tr id = "rw6"></tr>
+                  <tr id = "rw7"></tr>
+                  <tr id = "rw8"></tr>
+                  <tr id = "rw9"></tr>
+                  <tr id = "rw10"></tr>
+                  <tr id = "rw11"></tr>
+                  <tr id = "rw12"></tr>
+                  <tr id = "rw13"></tr>
+                  <tr id = "rw14"></tr>
+                  <tr id = "rw15"></tr>
+                  <tr id = "rw16"></tr>
+                  <tr id = "rw17"></tr>
+                  <tr id = "rw18"></tr>
+                  <tr id = "rw19"></tr>
+                  <tr id = "rw20"></tr>
+                  <tr id = "rw21"></tr>
+                  <tr id = "rw22"></tr>
+                  <tr id = "rw23"></tr>
+                  <tr id = "rw24"></tr>
+                  <tr id = "rw25"></tr>
+                  <tr id = "rw26"></tr>
+                  <tr id = "rw27"></tr>
+                  <tr id = "rw28"></tr>
+                  <tr id = "rw29"></tr>
+                  <tr id = "rw30"></tr>
+                  <tr id = "rw31"></tr>
+                  <tr id = "rw32"></tr>
+                  <tr id = "rw33"></tr>
+                  <tr id = "rw34"></tr>
+                  <tr id = "rw35"></tr>
+                  <tr id = "rw36"></tr>
+                  <tr id = "rw37"></tr>
+                  <tr id = "rw38"></tr>
+                  <tr id = "rw39"></tr>
+                  <tr id = "rw40"></tr>
+                  <tr id = "rw41"></tr>
+                  <tr id = "rw42"></tr>
+                  <tr id = "rw43"></tr>
+                  <tr id = "rw44"></tr>
+                  <tr id = "rw45"></tr>
+                  <tr id = "rw46"></tr>
+                  <tr id = "rw47"></tr>
+                  <tr id = "rw48"></tr>
+               </table>
+            </div>
+            
+            <!-- Lists!-->
+            <div class="grid-item grid-item-trio">
+               
+ 
+       <div class="teList">
+         <h1>Tasks</h1>
+         <ul id="list_of_tasks"></ul>
+       </div>
+ 
+       <div class="teList">
+         <h1>Events</h1>
+         <ul id="list_of_events"></ul>
+       </div>
+ 
+       <div class="teList" style="display: block">
+         <h1>Calendar</h1>
+         <p id="cal_array"></p>
+       </div>
+       <input id="button_update" type="submit" value="Update Calendar" class="button"/>
+            </div>
       <script type="text/javascript" src="monthlyCalendar.js"></script>
       <script type="text/javascript" src="weeklyCalendar.js"></script>
 
       
+      <div class="grid-item grid-item-trio">
 
-
-      <div>
+      <div class="add_task">
          <h1>Add Task</h1>
  
          <input type="text" id="task_name" placeholder="Task Name" class="task_name"><br>
@@ -178,69 +146,37 @@
          <output id="est_sli_text">30</output>
          <br>
  
-         <input id="add_date_button" type="submit" value="Add Due Date"><br id="add_date_button_break">
+         <input id="add_date_button" class="button" type="submit" value="Add Due Date"><br id="add_date_button_break">
  
          <div id="task_date" style="display:none">
            <label for="urgency_date">Due Date:</label>
-           <input type="date" id="urgency_date" value="">
-           <input id="remove_date_button" type="submit" value="Remove Due Date">
+           <input type="date" id="urgency_date" value="" class="d2">
+           <input id="remove_date_button" type="submit" value="Remove Due Date" class="button">
          </div>
          
          <input id="add_task_button" type="submit" name="button" value="+"/><br>
          <p id="missing_info" style="display:none">Fill out missing information!</p>
  
        </div>
-       <div>
+       <div class="add_event">
          <h1>Add Event</h1>
-         <label for="fevent">Name:</label>
-         <input type="text" id="fevent" name="fevent"><br>
+         <input type="text" id="fevent" name="fevent" placeholder="Event Name"><br>
          <label for="date">Date:</label>
-         <input type="date" id="date" name="trip-start"><br>
+         <input type="date" id="date" name="trip-start" class="ddd"><br>
          <label for="start">Start:</label>
-         <input type="time" id="start"><br>
+         <input type="time" id="start" class="ddd"><br>
          <label for="end">End:</label>
-         <input type="time" id="end"><br>
-         <input id="button2" type="submit" name="button2" value="+"/>
+         <input type="time" id="end" class="ddd"><br>
+         <input id="button2" type="submit" name="button2" value="+" class="add_event"/>
        </div><br>
        
-       <div>
-        <label for="wake">Wake Up Time:</label>
-        <input type="time" id="wake"><br>
-        <label for="bed">Bedtime:</label>
-        <input type="time" id="bed"><br>
-       </div>
        
-       <input id="button_update" type="submit" value="UPDATE CALENDAR"/>
- 
-       <div>
-         <h1>Tasks</h1>
-         <ul id="list_of_tasks"></ul>
-       </div>
- 
-       <div>
-         <h1>Events</h1>
-         <ul id="list_of_events"></ul>
-       </div>
- 
-       <div>
-         <h1>Calendar</h1>
-         <p id="cal_array"></p>
-       </div>
- 
- 
-       <!--
- 
-         <p id="alltasks"></p>
-       <p id="allevents"></p>
- 
-       -->
- 
- 
-       
+
        <script src="calendar.js"></script>
        <div>
          
        </div>
+      </div>
 
 
 
