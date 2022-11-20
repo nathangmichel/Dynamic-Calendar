@@ -3,7 +3,7 @@
 let wake;
 let bed;
 
-
+let date = new Date();
 
 const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
@@ -29,12 +29,10 @@ class Event {
 var result = []; // THE ACTUAL FINAL ARRAY
 var event_calendar = []; // ARRAY WITH EVENTS
 
-for (var i = 0; i < 48; i++) {
+for (var i = 0; i < 240; i++) {
     result[i] = null;
     event_calendar[i] = null;
 }
-
-
 
 // IF DUE DATE NEEDS TO BE ADDED OR REMOVED
 
@@ -101,7 +99,6 @@ function updateTasks() {
             li.innerText = item.name + " (Importance: " + item.importance + ") Due: " + (item.date.getDate() + 1) + " " + month[item.date.getMonth()] + " ";
         }
 
-        
         let x = document.createElement("button");
         x.innerHTML = "X";
         li.appendChild(x);
@@ -112,10 +109,10 @@ function updateTasks() {
             for (i =0; i < tasks.length; i++) {
                 if (tasks[i] == item) {
                     break;
-                }
+                } 
             }
             tasks.splice(i, 1);
-            for (let j = 0; j < 48; j++) {
+            for (let j = 0; j < 240; j++) {
                 if (result[j] == item) result[j] = null;
             }
             updateTasks();
@@ -133,16 +130,32 @@ var events = [];
 
 document.getElementById('button2').onclick = function() {
 
-   const event = new Event(document.getElementById("fevent").value, document.getElementById("date").value, 
+   const event = new Event(document.getElementById("fevent").value, new Date(document.getElementById("date").value), 
    [parseInt(document.getElementById("start").value.substring(0,2)), parseInt(document.getElementById("start").value.substring(3,5))], 
    [parseInt(document.getElementById("end").value.substring(0,2)), parseInt(document.getElementById("end").value.substring(3,5))]);
    events.push(event);
 
-   console.log((event.start[0] * 60 + event.start[1]) / 30);
-
-   for (var i = (event.start[0] * 60 + event.start[1]) / 30; i < (event.end[0] * 60 + event.end[1]) / 30; i++) {
-        event_calendar[i] = event;
-   }
+   if (event.date.getMonth() == date.getMonth() && event.date.getDate() == date.getDate() - 1) {
+        for (var i = (event.start[0] * 60 + event.start[1]) / 30; i < (event.end[0] * 60 + event.end[1]) / 30; i++) {
+            event_calendar[i] = event;
+        }
+   } else if (event.date.getMonth() == date.getMonth() && event.date.getDate() == date.getDate()) {
+        for (var i = (event.start[0] * 60 + event.start[1]) / 30; i < (event.end[0] * 60 + event.end[1]) / 30; i++) {
+            event_calendar[i + 48] = event;
+        }
+   } else if (event.date.getMonth() == date.getMonth() && event.date.getDate() == date.getDate() + 1) {
+    for (var i = (event.start[0] * 60 + event.start[1]) / 30; i < (event.end[0] * 60 + event.end[1]) / 30; i++) {
+        event_calendar[i + 96] = event;
+    }
+} else if (event.date.getMonth() == date.getMonth() && event.date.getDate() == date.getDate() + 2) {
+    for (var i = (event.start[0] * 60 + event.start[1]) / 30; i < (event.end[0] * 60 + event.end[1]) / 30; i++) {
+        event_calendar[i + 144] = event;
+    }
+} else if (event.date.getMonth() == date.getMonth() && event.date.getDate() == date.getDate() + 3) {
+    for (var i = (event.start[0] * 60 + event.start[1]) / 30; i < (event.end[0] * 60 + event.end[1]) / 30; i++) {
+        event_calendar[i + 192] = event;
+    }
+} 
 
    document.getElementById("fevent").value = "";
    document.getElementById("date").value = "";
@@ -200,13 +213,16 @@ function sync() {
     bed = [parseInt(document.getElementById("bed").value.split(":")[0]), parseInt(document.getElementById("bed").value.split(":")[1])];
 
     for (var i = 0; i < 48; i++) {
-
         if (i < (wake[0]*60+wake[1])/30) {
-            event_calendar[i] = -1;
+            for (let j = 0; j < 5; j++) {
+                event_calendar[i + j*48] = -1;
+            }
         }
 
         if (i >= (bed[0]*60+bed[1])/30) {
-            event_calendar[i] = -1;
+            for (let j = 0; j < 5; j++) {
+                event_calendar[i + j*48] = -1;
+            }
         }
     }
 
@@ -234,7 +250,7 @@ function sync() {
 
     let j = 0;
     let current_est = tasks[j].est_length;
-    for (var i = 0; i < 48; i++) {
+    for (var i = 0; i < result.length; i++) {
 
         console.log(result)
 
@@ -258,7 +274,5 @@ function sync() {
 }
 
 document.getElementById("button_update").onclick = function() {
-
     sync()
-
 }
