@@ -1,14 +1,11 @@
 # Dynamic-Calendar
 
-To-Do's
-Basic Features
- - week view
- - load regular schedule (courses etc.)
- - list of to-do's/events 
- - ability to add tasks/events to list
- - ability to add tasks/events from list to calendar (automatic placement) <-KEY FEATURE!!
- - label tasks
 
- Extra Features
- - Pomodoro-based arrangements
- - 
+What it does
+One place for all your events and study tasks. It uses an algorithm inspired by the Pomodoro Technique to schedule your tasks in an optimal manner.
+
+
+Coded in
+HTML5/css/javascript
+
+
