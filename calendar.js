@@ -26,6 +26,7 @@ class Event {
     
 }
 
+let maxTime = 30;
 var result = []; // THE ACTUAL FINAL ARRAY
 var event_calendar = []; // ARRAY WITH EVENTS
 
@@ -248,23 +249,65 @@ function sync() {
 
     console.log(tasks)
 
+    let copy = []
+    for(let m=0; m < tasks.length; m++)
+    {
+        copy.push(tasks[m].est_length)
+
+    }
+
     let j = 0;
-    let current_est = tasks[j].est_length;
+    let current_est = copy[j];
+    let prev = 0;
     for (var i = 0; i < result.length; i++) {
 
         console.log(result)
 
         if (result[i] != null) continue; 
             
-        if (current_est > 0) {
+       //if (copy[j] == 0) {
+        //i--
+       //}
+
             result[i] = tasks[j];
-            current_est -= 30;
-        } else {
-            j++;
-            if (j == tasks.length) break
-            current_est = tasks[j].est_length;
-            i--;
-        }
+            copy[j] -= maxTime;
+            if(copy[prev] <= 0 )
+            {
+                while(copy[prev] <= 0 && prev < tasks.length)
+                {
+                    prev++;
+                    j++;
+
+                }
+                i--;
+
+            }
+            else if(j == prev)
+            {
+                j++;
+            }
+            else{
+                j = prev;
+                
+            }
+            
+        
+        
+            
+            
+            
+            
+      //} else {
+            
+        //     if (j == tasks.length) break
+        //     current_est = tasks[j].est_length;
+        //     i--;
+       // }
+
+        
+        
+
+        
 
     }
 
