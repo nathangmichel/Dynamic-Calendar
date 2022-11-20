@@ -164,7 +164,7 @@ transition-duration: 0.4s;
 #task_name {
 	font-family: "Avenir";
 	font-size: 15px;
-	width: 10%;
+	width: 50%;
 	border: 0;
 	border-bottom: 2px solid #9b9b9b;
 	outline: 0;
@@ -178,11 +178,11 @@ transition-duration: 0.4s;
   #fevent {
 	font-family: "Avenir";
 	font-size: 15px;
-	width: 10%;
+	width: 50%;
 	border: 0;
 	border-bottom: 2px solid #9b9b9b;
 	outline: 0;
-	color: #000;
+	color: rgb(242, 240, 242);
 	padding: 7px 0;
 	transition: border-color 0.2s;
 	margin-bottom: 10px;
@@ -206,6 +206,8 @@ transition-duration: 0.4s;
 	font-family: "Avenir";
 	margin: 10px 10px;
 	margin-bottom: 10px;
+	color: rgb(242, 240, 242);
+
   }
 
   #button2 {
@@ -227,6 +229,8 @@ transition-duration: 0.4s;
 	font-family: "Avenir";
 	margin: 10px 10px;
 	margin-bottom: 10px;
+	color: rgb(242, 240, 242);
+
   }
 
   input.button {
@@ -281,13 +285,15 @@ transition-duration: 0.4s;
 	font-family: "Avenir";
 	margin: 10px 10px;
 	margin-bottom: 10px;
+	color: rgb(242, 240, 242);
+	;
   }
 
   .teList button {
 	font-family: "Avenir";
 	background-color: #000000; /* Green */
 	border: none;
-	color: white;
+	color: rgb(242, 240, 242);
 	padding: 2.5px 5px;
 	text-align: center;
 	text-decoration: none;
