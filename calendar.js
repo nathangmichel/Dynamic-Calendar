@@ -26,6 +26,7 @@ class Event {
     
 }
 
+let maxTime = 30;
 var result = []; // THE ACTUAL FINAL ARRAY
 var event_calendar = []; // ARRAY WITH EVENTS
 
@@ -33,6 +34,9 @@ for (var i = 0; i < 240; i++) {
     result[i] = null;
     event_calendar[i] = null;
 }
+
+var todayDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
+document.getElementById("date").setAttribute('min', todayDate);
 
 // IF DUE DATE NEEDS TO BE ADDED OR REMOVED
 
@@ -116,7 +120,7 @@ function updateTasks() {
                 if (result[j] == item) result[j] = null;
             }
             updateTasks();
-            updateCalendar();
+            updateCalendarArr();
         }
         list.appendChild(li);
     })
@@ -200,12 +204,13 @@ function updateEvents() {
         list.appendChild(li);
     })
     result = [...event_calendar];
-    updateCalendar();
+    updateCalendarArr();
     //document.getElementById("allevents").innerHTML = JSON.stringify(events, null, 2);
 }
 
-function updateCalendar(){
+function updateCalendarArr(){
     document.getElementById("cal_array").innerHTML = JSON.stringify(result, null, 2);
+    updateCalendar(result)
 }
 
 function sync() {
@@ -248,29 +253,71 @@ function sync() {
 
     console.log(tasks)
 
+    let copy = []
+    for(let m=0; m < tasks.length; m++)
+    {
+        copy.push(tasks[m].est_length)
+
+    }
+
     let j = 0;
-    let current_est = tasks[j].est_length;
+    let current_est = copy[j];
+    let prev = 0;
     for (var i = 0; i < result.length; i++) {
 
         console.log(result)
 
         if (result[i] != null) continue; 
             
-        if (current_est > 0) {
+       //if (copy[j] == 0) {
+        //i--
+       //}
+
             result[i] = tasks[j];
-            current_est -= 30;
-        } else {
-            j++;
-            if (j == tasks.length) break
-            current_est = tasks[j].est_length;
-            i--;
-        }
+            copy[j] -= maxTime;
+            if(copy[prev] <= 0 )
+            {
+                while(copy[prev] <= 0 && prev < tasks.length)
+                {
+                    prev++;
+                    j++;
+
+                }
+                i--;
+
+            }
+            else if(j == prev)
+            {
+                j++;
+            }
+            else{
+                j = prev;
+                
+            }
+            
+        
+        
+            
+            
+            
+            
+      //} else {
+            
+        //     if (j == tasks.length) break
+        //     current_est = tasks[j].est_length;
+        //     i--;
+       // }
+
+        
+        
+
+        
 
     }
 
     }
 
-    updateCalendar();
+    updateCalendarArr();
 }
 
 document.getElementById("button_update").onclick = function() {

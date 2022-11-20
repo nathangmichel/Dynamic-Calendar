@@ -1,70 +1,20 @@
-.grid-container{
-	display: grid;
-		
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-columns: repeat(autofit minmax(150px 1fr));
-	grid-template-rows: ;
-	grid-gap: 1rem;
-	height: 100vh;
+#Info{
+	margin-left: auto;
+  	margin-right: auto;
 }
 
-.grid-item-pageTitle{
-	grid-column: 1fr;
-}
-.grid-item-wakeBed{
-	padding: 1rem 2rem 0rem 2rem;
-	font-size: 10px;
-	font-weight: bold;
-	grid-column: span 1;
-	text-align: left;
-	color: rgb(242, 240, 242);
-
-}
-.grid-item-trio{
-	grid-column: span 1;
-	grid-row: span 3;
-	box-shadow: rgb(72, 29, 33) 0px, 0.15rem,0.15rem;
-	border-radius: 8px;
-	/*border: 2px solid #555555;*/
-	background-color: rgb(204, 69, 39);
-}
-
-.ListItem{
-	padding: 1rem 2rem 0rem 2rem;
-	color: rgb(242, 240, 242);
-	font-size: 10px;
-
-}
-
-
-
-.pageHeader{
-	text-align: left;
-	padding-left: 20px;
-	font-size: 50px;
-	font-weight: bold;
-	color: rgb(242, 240, 242);
-	padding-top: 16px;
-	padding-bottom: 0px;
-
-}
-/* 
 #left{
 	padding: 30px;
 	}
 #right{
 	padding: 70px;
-	} */
+	}
 
-
-html, body{
-	background-color: rgb(96, 39, 45);
-}
-.th{
+th{
 	text-align: left;
 	padding: 5px}
 
-.td{
+td{
 	padding: 14px;
 }
 
@@ -75,7 +25,7 @@ html, body{
 	text-decoration: none;
 }
 
-/* .inputBox
+.inputBox
 {
 	border:2px solid #555555;
 	border-radius: 4px;
@@ -84,14 +34,9 @@ html, body{
 	background-color: #f8f8f8;
 	font-size: 15px;
 	transition-duration: 0.4s;
-} */
-
-/* .list_of_events{
-	list-style: none;
 }
-.list_of_tasks{
-	list-style: none;
-} */
+
+
 #iIcon{
 	width: 15px;
 	height:15px;
@@ -102,53 +47,72 @@ html, body{
 }
 
 
-/* 
+
 textarea{
 	height: 150px;
 	width: 480px !important;
-} */
+}
 
-#button, #add_date_button, #remove_date_button, #add_task_button { 
-    padding: 4px;
-	font-size: large;
-    font-family: 'Verdana';
-	color: rgb(242, 240, 242);
-	background-color: rgb(204, 69, 39);
+#button { 
+    border-style: solid;
+    border-color: black;
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    background-color: red;
     border-radius: 25px;
     width: 200px;
     height: 100%;
     text-align: center;
 }
-#rw+*{
-	background-color: rgb(204, 69, 39);
 
-}
-/* .inputBox:hover {
+.inputBox:hover {
 	border-color: red;
-	transition: 0.2s;
-} */
-
-#button, #add_date_button, #remove_date_button, #add_task_button:hover{
-	background-color: #8b0000;
-	color: rgb(242, 240, 242);
-	transition: 0.2s;
 }
 
-/* #weekCalendar
+#button:hover{
+	background-color: #8b0000;
+	color: white;
+}
+
+#calendar
 {
 	border-radius: 4px;
-	/* border: 2px solid #555555; */
-	/* background-color: rgb(204, 69, 39);
-} */ 
+	border: 2px solid #555555;
+	background-color: rgb(255, 255, 255, .8);
+}
 
 #monthLabel
 {
 	font-size: 18px !important;
-	color: rgb(242, 240, 242);
-	background-color: rgb(204, 69, 39);
-
 }
 
+#calendar
+{
+	position: relative;
+	left: -50px;
+}
+
+
+#calendar tr td, #calendar tr th
+{
+font-size: 14px;
+border: 2px solid transparent;
+border-radius: 5px;
+text-align: center;
+}
+
+#calendar tr:hover td:not(#selectedDay)
+{
+background-color: rgb(240, 240, 240);
+transition-duration: 0.4s;
+}
+
+#selectedDay
+{
+	background-color: darkred;
+	color: white;
+}
 
 .pastDays
 {
@@ -165,6 +129,26 @@ textarea{
 #prevmonth:hover, #nextmonth:hover
 {
 	background-color: darkred;
-	color: rgb(242, 240, 242);
+	color: white;
 }
 
+/*.mondays
+{
+	color: darkgrey;
+	background: rgb(229, 229, 229, .7);
+}*/
+
+#alertMsg
+{
+	color: #8b0000;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	background: rgb(255, 0, 0, .3);
+}
+
+#alertReserve
+{
+	background: rgb(255, 255, 255, .8);
+	line-height: 1.7;
+}

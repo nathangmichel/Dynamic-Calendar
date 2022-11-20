@@ -10,6 +10,23 @@ function weeklyCalendar() {
     for (var i = 0; i < 48; i++) {
         document.getElementById("rw" + (i + 1)).textContent = "";
     }
+
+    // legend update
+    var legendRow = document.getElementById("topLegend")
+    var arrayOfWeekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    var todayDay = new Date()
+    var weekdayNumber = todayDay.getDay()
+    var weekdayName = arrayOfWeekdays[weekdayNumber]
+    for(var i=1; i<6; i++)
+    {
+        var thElem = document.createElement('th');
+        thElem.textContent = weekdayName
+        legendRow.appendChild(thElem)
+
+        weekdayNumber++
+        weekdayName = arrayOfWeekdays[weekdayNumber]
+
+    }
     
     //initialize weeks
     var timeSlotHr = -0.5
@@ -32,17 +49,81 @@ function weeklyCalendar() {
             element.style.cssText += "vertical-align: top;cursor: not-allowed;"
             timeSlotHr += 0.5 
             document.getElementById("rw" + (i + 1)).appendChild(element);
-            for(var j=1; j<8;j++)
+            for(var j=0; j<5;j++)
             {
                 // create an element
                 var element = document.createElement("td")
-                var className = String(Math.ceil(timeSlotHr)) + ":" + timeSlotMin[i % 2] + "-" + String(j+1)
-                element.setAttribute("class", className);
+                var classNameForSlots = className + "-" + String(j)
+                element.setAttribute("class", classNameForSlots);
                 document.getElementById("rw" + (i + 1)).appendChild(element);
             }
     }
 
 };
+
+var deleteSleep = true
+
+function updateCalendar(list)
+{
+    // split data into 2d array
+    var newList = [];
+    while(list.length)
+    {
+        newList.push(list.splice(0,48));
+    }
+
+    // 1 bc time is 0
+    var dayIndex = 1
+    newList.forEach(weekdayData => {
+        for(var i=0; i<weekdayData.length; i++)
+        {
+            // get cell next to that time
+            var rowCell = "rw" + String(i+1)
+            var taskCell = document.getElementById(rowCell)
+
+            if(weekdayData[i] == -1)
+            {
+                if(deleteSleep)
+                {
+                    taskCell.remove()
+                }
+                continue
+            }
+            else if(weekdayData[i] != null && (weekdayData[i] instanceof Task || weekdayData[i] instanceof Event))
+            {
+                taskCell = taskCell.childNodes[dayIndex]
+                taskCell.className = weekdayData[i].name + "-" + taskCell.className
+                taskCell.textContent = weekdayData[i].constructor.name + " - " + weekdayData[i].name
+                if(weekdayData[i] instanceof Task){
+                    taskCell.classList.add("taskHighlight");
+                }
+                else
+                {
+                    taskCell.classList.add("eventHighlight");
+                }
+
+                if(weekdayData[i] instanceof Event)
+                {   
+                    // TODO: Merge the event slots together
+
+                    // // count nbr of occurence
+                    // var countEventSlots = 0;
+                    // weekdayData.forEach(element => {
+                    // if(element == weekdayData[i])
+                    // {
+                    //     count+= 1
+                    // }
+                    // });
+                    // taskCell.rowSpan = countEventSlots
+                    // i += countEventSlots - 1 
+                }
+                
+            }
+        }
+        deleteSleep = false
+        dayIndex++
+    });
+}
 
 document.getElementById("back").addEventListener("click", goBack);
 
@@ -59,7 +140,7 @@ var highlightedOnes = []
 document.getElementById("weekCalendar").onmousedown = function (event) {
 isMouseDown = true;
 console.log("MOUSE DOWN", event.target)
-if(event.target.className.includes('-'))
+if(event.target.className.includes('0-'))
     {
         highlightedOnes.push(event.target.className)
         event.target.classList.add("highlighted");
@@ -93,8 +174,8 @@ document.getElementById("weekCalendar").onmouseup = function () {
     // store values inside of the weekInputBox
     if(highlightedOnes.length > 1)
     {
-        var times = highlightedOnes.at(0) + "<->" + highlightedOnes.at(-1)
-        var timeBox = document.getElementsByClassName("weekInputBox")[1]
+        var times = highlightedOnes.at(0).substring(0, highlightedOnes.at(0).indexOf("-")) + "<->" + highlightedOnes.at(-1).substring(0, highlightedOnes.at(-1).indexOf("-"))
+        var timeBox = document.getElementsByClassName("weekInputBox")[0]
         timeBox.value = times
 
         var highlightedCells = Array.from(document.getElementsByClassName("highlighted"))
@@ -105,20 +186,41 @@ document.getElementById("weekCalendar").onmouseup = function () {
         })
         temporaryCourse = highlightedOnes
         highlightedOnes = []
-        addCourseToCalendar(temporaryCourse)
+        addCourseToCalendarLive(temporaryCourse)
     }
 }
 
-function addCourseToCalendar(hoursListClassName)
+// function that requires intervals (not be reading)
+function addCourseToCalendarLive(hoursListClassName)
 {
+    var rowspanned = false
     var table = document.getElementById("weekCalendar");
     for (var i = 0, row; row = table.rows[i]; i++) {
         for (var j = 0, col; col = row.cells[j]; j++) {
             //iterate through columns
             if(hoursListClassName.includes(col.className))
             {
-                col.classList.add("lectureHighlight");
+                if(!rowspanned)
+                {
+                    col.removeAttribute("class")
+                    col.classList.add(document.getElementsByClassName("weekInputBox")[0].value);
+                    col.classList.add("lectureHighlight");
+                    col.rowSpan= String(hoursListClassName.length)
+                    rowspanned = true
+                }
+                else
+                {
+                    col.remove()
+                }
             }
         }  
+    }
+}
+
+function addCourseToCalendar(scheduleObject)
+{
+    if(document.getElementsByClassName("inputBox")[0])
+    {
+
     }
 }
