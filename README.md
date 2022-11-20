@@ -1,6 +1,4 @@
 # Dynamic-Calendar
-# Dynamic-Calendar
-# Dynamic-Calendar
 
 To-Do's
 Basic Features
