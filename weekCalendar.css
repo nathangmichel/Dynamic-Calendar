@@ -1,9 +1,10 @@
 
 #weekCalendar
 {
-	border-radius: 4px;
-	border: 2px solid #555555;
-	background-color: rgb(255, 255, 255, .8);
+	box-shadow: rgb(72, 29, 33) 0px, 0.15rem,0.15rem;
+	border-radius: 8px;
+	/*border: 2px solid #555555;*/
+	background-color: rgb(204, 69, 39);
 }
 
 #back
@@ -28,36 +29,32 @@ text-align: center;
 
 #weekCalendar tr td
 {
-	padding: 0 14px 20px 14px;
+	padding: 0 14px 5px 14px;
 	width: 70px;
 }
 
 #weekCalendar tr td:hover:not(:first-child)
 {
-background-color: rgb(240, 240, 240);
-transition-duration: 0.4s;
+background-color: rgb(242, 240, 242);
+transition-duration: 0.2s;
 }
 
 #back
 {
 	font-weight: bold;
 	background-color: rgb(255,99,71, .3);
-	transition-duration: 0.4s;
+	transition-duration: 0.2;
 }
 
 #back:hover
 {
-	background-color: darkred;
-	color: white;
+	background-color:rgb(96, 39, 45);
+	color: rgb(242, 240, 242);
 }
 
 td.highlighted {
-	background-color:darkred;
+	background-color:rgb(96, 39, 45);
   }
-
-td.lectureHighlight {
-background-color:lightblue;
-}
 
 #weekCalendar tr td:first-child::selection, #weekCalendar tr[name="headerMenu"] th::selection, #topLegend th::selection
 {
