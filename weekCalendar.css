@@ -38,14 +38,14 @@ background-color: rgb(240, 240, 240);
 transition-duration: 0.4s;
 }
 
-#back
+#back, #help
 {
 	font-weight: bold;
 	background-color: rgb(255,99,71, .3);
 	transition-duration: 0.4s;
 }
 
-#back:hover
+#back:hover, #help:hover
 {
 	background-color: darkred;
 	color: white;

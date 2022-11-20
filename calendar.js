@@ -37,6 +37,7 @@ for (var i = 0; i < 240; i++) {
 
 var todayDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
 document.getElementById("date").setAttribute('min', todayDate);
+document.getElementById("urgency_date").setAttribute('min', todayDate);
 
 // IF DUE DATE NEEDS TO BE ADDED OR REMOVED
 
