@@ -1,6 +1,5 @@
 .grid-container{
 	display: grid;
-		
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-columns: repeat(autofit minmax(150px 1fr));
 	grid-gap: 1rem;
@@ -25,7 +24,15 @@
 	box-shadow: rgb(72, 29, 33) 0px, 0.15rem,0.15rem;
 	border-radius: 8px;
 	/*border: 2px solid #555555;*/
-	background-color: rgb(204, 69, 39);
+	background-color: rgb(45, 45, 45);
+}
+
+label {
+	color: white;
+}
+
+output {
+	color: white;
 }
 
 .ListItem{
@@ -57,7 +64,7 @@
 
 
 html, body{
-	background-color: rgb(96, 39, 45);
+	background-color: rgb(25, 25, 25);
 }
 .th{
 	text-align: left;
@@ -175,17 +182,20 @@ transition-duration: 0.4s;
 	margin-bottom: 10px;
   }
 
-  #fevent {
+  
+
+  #add_task input {
+	width: 80px;
+  }
+  
+  body {
 	font-family: "Avenir";
-	font-size: 15px;
-	width: 10%;
-	border: 0;
-	border-bottom: 2px solid #9b9b9b;
-	outline: 0;
-	color: #000;
-	padding: 7px 0;
-	transition: border-color 0.2s;
-	margin-bottom: 10px;
+  }
+
+  h1 {
+	color: white;
+	margin: 12px 5px;
+	font-size: 18px;
   }
 
   #add_task_button {
@@ -198,9 +208,18 @@ transition-duration: 0.4s;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 15px;
-	border-radius: 25px;
+	border-radius: 5px;
 	margin-bottom: 10px;
   }
+
+  #task_name {
+	width: 200px;
+	color: white;
+	margin: 5px;
+	margin-top: 0px;
+  }
+
+  
 
   .add_task {
 	font-family: "Avenir";
@@ -218,15 +237,90 @@ transition-duration: 0.4s;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 15px;
-	border-radius: 25px;
+	border-radius: 5px;
 	margin-bottom: 10px;
 	margin-left: 0px;
   }
 
+  
+
+  .slider {
+	-webkit-appearance: none;
+	width: 200px;
+	height: 6px;
+	border-radius: 5px;  
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.9;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+	justify-content: right;
+  }
+  
+  .slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%; 
+	background: #ffffff;
+	cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+	width: 15px;
+	height: 25px;
+	border-radius: 50%;
+	background: #ffffff;
+	cursor: pointer;
+  }
+
+  
+
+  #task_name {
+    width: 200px;
+    color: white;
+    margin: 5px;
+    margin-top: 0px;
+}
+#fevent {
+    font-family: "Avenir";
+    font-size: 15px;
+    width: 10%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    color: rgb(255, 255, 255);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    margin-bottom: 10px;
+	width: 200px;
+	margin-left: 5px;
+}
+
+
+
 .add_event {
 	font-family: "Avenir";
-	margin: 10px 10px;
 	margin-bottom: 10px;
+	margin-left: 10px;
+  }
+  
+  label {
+	margin-left: 5px;
+  }
+
+  .add_event label {
+	margin-left: 5px;
+  }
+
+  input {
+	margin-left: 5px;
+  }
+
+  #button2 {
+	margin-left: 5px;
   }
 
   input.button {
@@ -234,7 +328,7 @@ transition-duration: 0.4s;
 	border: block;
 	border-width: 1.5px;
 	border-color: rgb(137, 137, 137);
-	border-radius: 5px;
+	border-radius: 0px;
 	background-color: white;
 	color: black;
 	padding: 2px 14px;
@@ -293,7 +387,7 @@ transition-duration: 0.4s;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 10px;
-	border-radius: 100%;
+	border-radius: 10%;
 	margin-bottom: 10px;
 	margin-left: 5px;
   }

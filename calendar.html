@@ -1,4 +1,6 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
+
+<!--https://stackoverflow.com/questions/31656689/how-to-save-img-to-users-local-computer-using-html2canvas-->
 <html lang="en">
    <head>
       <title>Calendar Test</title>
@@ -146,7 +148,7 @@
          <ul id="list_of_events"></ul>
        </div>
  
-       <div class="teList" style="display: block">
+       <div class="teList" style="display: none">
          <h1>Calendar</h1>
          <p id="cal_array"></p>
        </div>
@@ -160,14 +162,16 @@
  
          <input type="text" id="task_name" placeholder="Task Name" class="task_name"><br>
          
-         <label for="importance_slider">Importance:</label>
+         
          <input type="range" min="0" max="100" value="50" class="slider" id="importance_slider" oninput="this.nextElementSibling.value = this.value">
          <output id="imp_sli_text">50</output>
+         <label for="importance_slider" class="dada">Importance</label>
          <br>
          
-         <label for="est_length">Estimated Length:</label>
+         
          <input type="range" min="30" max="240" value="30" class="slider" step="30" id="est_length" oninput="this.nextElementSibling.value = this.value">
          <output id="est_sli_text">30</output>
+         <label for="est_length">Estimated Length</label>
          <br>
  
          <input id="add_date_button" class="button" type="submit" value="Add Due Date"><br id="add_date_button_break">
